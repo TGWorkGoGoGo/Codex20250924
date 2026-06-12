@@ -41,3 +41,10 @@ Apply these translations consistently unless the user explicitly overrides them.
 | empirical result | 实证结果 |
 | literature review | 文献综述 |
 | volatility transmission | 波动传导 |
+| et al. | 等 |
+
+## Hard Rules
+
+- Translate `et al.` exactly as `等`; never use `等人` or `等人。`.
+- Preserve English personal names and romanized author names exactly.
+- Preserve variable names exactly, including `Did`, `Pilot`, `Time`, `Tpsub`, `Nea`, `Soc`, `Epi`, `Gri`, `Asset`, `TFP`, `Prn`, `Lev`, `Bos`, `Emp`, `Gdp`, `Lcp`, `Cp`, and `Relsize`.

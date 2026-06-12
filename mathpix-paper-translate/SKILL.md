@@ -58,6 +58,7 @@ python "${SKILL_DIR}\scripts\validate_mathpix_translation.py" --source "<source.
 - Treat formulas, code fences, inline code, image URLs, HTML image tags, link targets, tables, canonical footnote markers, and heading levels as protected spans.
 - Translate only visible prose. Keep URLs, DOI strings, LaTeX bodies, and code contents unchanged.
 - Translate Markdown image alt text only inside `[]`; never edit the path inside `()`.
+- Preserve English personal names and variable names exactly. Translate `et al.` as `等` only; never use `等人` or `等人。`.
 
 ### 3. Translate with the protocol
 
@@ -69,6 +70,7 @@ python "${SKILL_DIR}\scripts\validate_mathpix_translation.py" --source "<source.
   - do not leave spaces inside the brackets, do not insert a space before the colon, and do not omit the post-colon space when content exists
 - After assembling the draft, run `scripts/normalize_mathpix_footnotes.py` so every final footnote definition is flattened into one Markdown line, rendered as `[^n]: content`, and stripped of any stray leading numeric marker.
 - Apply the fixed glossary in `references/fixed_glossary_en_zh.md` before inventing new terms.
+- Enforce the author-name rule: keep romanized names unchanged, keep variable names such as `Did`, `Pilot`, `Time`, `Tpsub`, `Nea`, `Soc`, `Epi`, and `Gri` unchanged, and render `et al.` as `等`.
 - Preserve paragraph alignment. Do not merge or split paragraphs, list items, footnote definitions, or table cells.
 - Default to adding `📘` before H1 and `🔍` before H2 headings unless the user explicitly asks to disable emoji titles.
 

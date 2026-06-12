@@ -19,6 +19,8 @@ Apply these rules throughout the translation.
 - Keep Markdown image paths and HTML image attributes unchanged. Translate only image alt text inside `![Alt](...)`.
 - Keep every `$...$` and `$$...$$` LaTeX body unchanged.
 - Keep fenced code blocks and inline code unchanged. Translate only prose outside them.
+- Preserve English personal names, romanized author names, and variable names exactly. Do not sinicize names and do not translate model or data variables such as `Did`, `Pilot`, `Time`, `Tpsub`, `Nea`, `Soc`, `Epi`, `Gri`, `Asset`, `TFP`, `Prn`, `Lev`, `Bos`, `Emp`, `Gdp`, `Lcp`, `Cp`, or `Relsize`.
+- Translate `et al.` exactly as `等`; never render it as `等人` or `等人。`. Keep the English name before it unchanged.
 - Preserve Markdown syntax for headings, lists, tables, quotes, links, and footnotes.
 - Lock final footnotes to canonical Markdown only:
   - body reference must be exactly `[^n]`
@@ -62,7 +64,11 @@ Use these findings to prepare a footnote audit before translating.
 ### 2.3 Translate the body
 
 - Use scholarly but readable Chinese.
-- Keep technical abbreviations, URLs, company names, journal names, and citation metadata as needed.
+- Keep technical abbreviations, URLs, company names, journal names, English author names, and variable names unchanged.
+- In visible prose and in-text citations, translate `et al.` as `等` only:
+  - `Zhang et al. (2020)` -> `Zhang 等（2020）`
+  - `(Zhang et al., 2020)` -> `（Zhang 等，2020）`
+  - Do not output `Zhang 等人`, `Zhang 等人。`, or translated/sinicized author names.
 - Prefer full-width Chinese parentheses in prose. Do not touch parentheses inside formulas, code, or link targets.
 - If `EMOJI_TITLES=true`, rewrite headings as:
   - `# 📘 ...`
@@ -91,6 +97,7 @@ If any check fails, repair the draft before continuing.
 - If a definition begins with a stray marker such as `${ }^{1}$` inside `[^1]:` or `[^3]: ${ }^{2}$ ...`, remove that leading numeric marker from the definition text.
 - Do not convert LaTeX expressions inside footnotes into Markdown footnote references.
 - Translate visible prose inside footnotes, but keep links, DOI strings, and structural punctuation intact.
+- Apply the same name and variable protections inside footnotes: preserve English names and variables, and translate `et al.` as `等`.
 - Do not leave extra spaces inside `[^n]`, before `:`, or between `:` and the content.
 
 ### 3.2 Enforce bidirectional consistency
